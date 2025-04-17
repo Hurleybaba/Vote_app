@@ -6,10 +6,7 @@ import profileImage from "@/assets/images/download.jpg";
 
 const menu = () => {
   return (
-    <SafeAreaView
-      style={{ flex: 1, width: "100%", height: "100%" }}
-      edges={["top", "bottom"]}
-    >
+    <SafeAreaView style={{ flex: 1, width: "100%", height: "100%" }}>
       <ScrollView style={{ flex: 1, marginBottom: 80 }}>
         <View style={styles.container}>
           <View style={styles.circle}>

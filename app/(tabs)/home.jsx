@@ -1,7 +1,6 @@
 import { Link } from "expo-router";
 import {
   Image,
-  ImageBackground,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,97 +8,99 @@ import {
   View,
 } from "react-native";
 import image from "@/assets/images/download.jpg";
-import background from "@/assets/images/dark7.jpg";
 import { Ionicons } from "@expo/vector-icons";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.box1}>
-        <View style={styles.circle}>
-          <Image source={image} style={styles.image} />
-        </View>
-        <View>
-          <Text style={styles.welcomeText}>
-            Welcome,
-            <Text style={styles.user}> User</Text>
-          </Text>
-        </View>
-      </View>
-      <View style={styles.box2}>
-        <Text style={styles.completeKYC}>Complete your KYC</Text>
-      </View>
-      <Text style={styles.heading}>Ongoing Elections</Text>
-      <View style={styles.collection}>
-        <View style={styles.feed}>
-          <View style={styles.newsfeedDetails}>
-            <Text style={styles.topic}>Vote for Student Representative</Text>
-            <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
-            <Text style={styles.subtopic}>
-              Student Representatives are known as enrolled scholars at their
-              institution elected for a specific term to represent the student
+    <SafeAreaView style={{ flex: 1, width: "100%", height: "100%" }}>
+      <ScrollView style={styles.container}>
+        <View style={styles.box1}>
+          <View style={styles.circle}>
+            <Image source={image} style={styles.image} />
+          </View>
+          <View>
+            <Text style={styles.welcomeText}>
+              Welcome,
+              <Text style={styles.user}> User</Text>
             </Text>
           </View>
         </View>
-        <View style={styles.feed}>
-          <View style={styles.newsfeedDetails}>
-            <Text style={styles.topic}>Vote for Student Representative</Text>
-            <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
-            <Text style={styles.subtopic}>
-              Student Representatives are known as enrolled scholars at their
-              institution elected for a specific term to represent the student
-            </Text>
+        <View style={styles.box2}>
+          <Text style={styles.completeKYC}>Complete your KYC</Text>
+        </View>
+        <Text style={styles.heading}>Ongoing Elections</Text>
+        <View style={styles.collection}>
+          <View style={styles.feed}>
+            <View style={styles.newsfeedDetails}>
+              <Text style={styles.topic}>Vote for Student Representative</Text>
+              <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
+              <Text style={styles.subtopic}>
+                Student Representatives are known as enrolled scholars at their
+                institution elected for a specific term to represent the student
+              </Text>
+            </View>
+          </View>
+          <View style={styles.feed}>
+            <View style={styles.newsfeedDetails}>
+              <Text style={styles.topic}>Vote for Student Representative</Text>
+              <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
+              <Text style={styles.subtopic}>
+                Student Representatives are known as enrolled scholars at their
+                institution elected for a specific term to represent the student
+              </Text>
+            </View>
+          </View>
+          <View style={styles.more}>
+            <Link href="/news">
+              <TouchableOpacity style={{ flexDirection: "row", gap: 5 }}>
+                <Text style={styles.moreText}>See more</Text>
+                <Ionicons
+                  name="caret-forward-outline"
+                  size={24}
+                  color="#E8612D"
+                />
+              </TouchableOpacity>
+            </Link>
           </View>
         </View>
-        <View style={styles.more}>
-          <Link href="/news">
-            <TouchableOpacity style={{ flexDirection: "row", gap: 5 }}>
-              <Text style={styles.moreText}>See more</Text>
-              <Ionicons
-                name="caret-forward-outline"
-                size={24}
-                color="#E8612D"
-              />
-            </TouchableOpacity>
-          </Link>
-        </View>
-      </View>
-      <Text style={styles.heading}>Upcoming Elections</Text>
-      <View style={styles.collection}>
-        <View style={styles.feed}>
-          <View style={styles.newsfeedDetails}>
-            <Text style={styles.topic}>Vote for Student Representative</Text>
-            <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
-            <Text style={styles.subtopic}>
-              Student Representatives are known as enrolled scholars at their
-              institution elected for a specific term to represent the student
-            </Text>
+        <Text style={styles.heading}>Upcoming Elections</Text>
+        <View style={styles.collection}>
+          <View style={styles.feed}>
+            <View style={styles.newsfeedDetails}>
+              <Text style={styles.topic}>Vote for Student Representative</Text>
+              <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
+              <Text style={styles.subtopic}>
+                Student Representatives are known as enrolled scholars at their
+                institution elected for a specific term to represent the student
+              </Text>
+            </View>
+          </View>
+          <View style={styles.feed}>
+            <View style={styles.newsfeedDetails}>
+              <Text style={styles.topic}>Vote for Student Representative</Text>
+              <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
+              <Text style={styles.subtopic}>
+                Student Representatives are known as enrolled scholars at their
+                institution elected for a specific term to represent the student
+              </Text>
+            </View>
+          </View>
+          <View style={styles.more}>
+            <Link href="/news">
+              <TouchableOpacity style={{ flexDirection: "row", gap: 5 }}>
+                <Text style={styles.moreText}>See more</Text>
+                <Ionicons
+                  name="caret-forward-outline"
+                  size={24}
+                  color="#E8612D"
+                />
+              </TouchableOpacity>
+            </Link>
           </View>
         </View>
-        <View style={styles.feed}>
-          <View style={styles.newsfeedDetails}>
-            <Text style={styles.topic}>Vote for Student Representative</Text>
-            <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
-            <Text style={styles.subtopic}>
-              Student Representatives are known as enrolled scholars at their
-              institution elected for a specific term to represent the student
-            </Text>
-          </View>
-        </View>
-        <View style={styles.more}>
-          <Link href="/news">
-            <TouchableOpacity style={{ flexDirection: "row", gap: 5 }}>
-              <Text style={styles.moreText}>See more</Text>
-              <Ionicons
-                name="caret-forward-outline"
-                size={24}
-                color="#E8612D"
-              />
-            </TouchableOpacity>
-          </Link>
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 

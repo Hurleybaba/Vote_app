@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Platform,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
@@ -15,11 +15,8 @@ import Input from "../../components/input";
 import Button from "../../components/button";
 
 export default function signup() {
-  const [fullName, setFullName] = React.useState("");
-  const [username, setUsername] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [number, setNumber] = React.useState("");
-  // const [isLoading, setIsLoading] = useState(false);
+  const handlePasswordChange = (text) => {};
+  const handleConfirmPasswordChange = (text) => {};
 
   const router = useRouter();
 
@@ -39,48 +36,31 @@ export default function signup() {
             />
           </TouchableOpacity>
 
-          <Text style={styles.heading}>Add your Personal Info</Text>
-          <Text style={styles.subheading}>
-            Make sure to fill all available fields
-          </Text>
+          <Text style={styles.heading}>Set up a password</Text>
           <Input
-            name="Full Name"
-            placeholder="John Doe"
-            value={fullName}
-            onChangeText={setFullName}
+            name="Password"
+            placeholder="********"
+            value=""
+            onChangeText={handlePasswordChange}
             keyboardType="default"
           />
           <Input
-            name="Username"
-            placeholder="JohnDoe"
-            value={username}
-            onChangeText={setUsername}
-            keyboardType="default"
-          />
-          <Input
-            name="Email"
-            placeholder="John@gmail.com"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-          />
-          <Input
-            name="Phone Number"
-            placeholder="070XXXXXXXX"
-            value={number}
-            onChangeText={setNumber}
-            keyboardType="numeric"
+            name="Confirm Password"
+            placeholder="********"
+            value=""
+            onChangeText={handleConfirmPasswordChange}
+            keyboardType="visible-password"
           />
         </ScrollView>
         <Button
           text="Continue"
+          handlePress={() => {
+            router.push("/(tabs)/home");
+          }}
           buttonStyle={{
             position: "absolute",
             bottom: 20,
             marginLeft: 20,
-          }}
-          handlePress={() => {
-            router.push("/signup2");
           }}
         />
       </SafeAreaView>
@@ -91,7 +71,7 @@ export default function signup() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+
     padding: 20,
     paddingBottom: 100,
   },
@@ -107,11 +87,5 @@ const styles = StyleSheet.create({
     fontWeight: "light",
     marginBottom: 10,
     color: "gray",
-  },
-  buttonDisabled: {
-    backgroundColor: "#DADADA",
-    position: "absolute",
-    bottom: 20,
-    marginLeft: 20,
   },
 });

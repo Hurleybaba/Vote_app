@@ -10,8 +10,11 @@
     "**/*.ts",
     "**/*.js",
     "**/*.tsx",
+    "**/*.jsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "nativewind-env.d.ts"
+    "nativewind-env.d.ts",
+    "app/(tabs)/menu.jsx",
+    "app/(tabs)/home.jsx"
   ]
 }

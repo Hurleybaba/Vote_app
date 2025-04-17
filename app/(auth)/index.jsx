@@ -18,7 +18,7 @@ export default function index() {
       <Button
         text="SignUp"
         handlePress={() => {
-          router.push("/signup");
+          router.push("/(tabs)/home");
         }}
         textStyle={{ color: "white" }}
       />
@@ -43,6 +43,8 @@ export default function index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: "100%",
+    paddingHorizontal: 20,
     justifyContent: "center",
     alignItems: "center",
   },

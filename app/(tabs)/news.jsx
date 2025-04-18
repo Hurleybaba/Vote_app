@@ -11,6 +11,7 @@ import {
 import image from "@/assets/images/download.jpg";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
+import { router } from "expo-router";
 
 export default function Home() {
   const [ongoing, setOngoing] = useState(true);
@@ -185,7 +186,14 @@ export default function Home() {
               <Text style={styles.participantName}>John Doe</Text>
             </View>
           </ScrollView>
-          <TouchableOpacity style={styles.voteButton}>
+          <TouchableOpacity
+            style={styles.voteButton}
+            onPress={() => {
+              // Handle vote action here
+              setModalVisible(false);
+              router.push("/electionId"); // Navigate to the election page
+            }}
+          >
             <Text style={styles.voteButtonText}>Vote Now</Text>
           </TouchableOpacity>
         </View>

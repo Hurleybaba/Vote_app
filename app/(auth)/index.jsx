@@ -30,7 +30,8 @@ export default function index() {
       <Button
         text="Sign Up"
         handlePress={() => {
-          router.push("/(election)/123");
+          // router.push("/(election)/123");
+          router.push("/(tabs)/home");
         }}
         textStyle={{ color: "white" }}
       />

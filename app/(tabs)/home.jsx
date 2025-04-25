@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  StatusBar,
 } from "react-native";
 import image from "@/assets/images/download.jpg";
 import { Ionicons } from "@expo/vector-icons";
@@ -15,6 +16,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function Home() {
   return (
     <SafeAreaView style={{ flex: 1, width: "100%", height: "100%" }}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
       <ScrollView style={styles.container}>
         <View style={styles.box1}>
           <View style={styles.circle}>
@@ -36,34 +42,38 @@ export default function Home() {
             <View style={styles.newsfeedDetails}>
               <Text style={styles.topic}>Vote for Student Representative</Text>
               <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
-              <Text style={styles.subtopic}>
-                Student Representatives are known as enrolled scholars at their
-                institution elected for a specific term to represent the student
-              </Text>
             </View>
           </View>
           <View style={styles.feed}>
             <View style={styles.newsfeedDetails}>
               <Text style={styles.topic}>Vote for Student Representative</Text>
               <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
-              <Text style={styles.subtopic}>
-                Student Representatives are known as enrolled scholars at their
-                institution elected for a specific term to represent the student
-              </Text>
             </View>
           </View>
-          <View style={styles.more}>
-            <Link href="/news">
-              <TouchableOpacity style={{ flexDirection: "row", gap: 5 }}>
-                <Text style={styles.moreText}>See more</Text>
-                <Ionicons
-                  name="caret-forward-outline"
-                  size={24}
-                  color="#E8612D"
-                />
-              </TouchableOpacity>
-            </Link>
+          <View style={styles.feed}>
+            <View style={styles.newsfeedDetails}>
+              <Text style={styles.topic}>Vote for Student Representative</Text>
+              <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
+            </View>
           </View>
+          <View style={styles.feed}>
+            <View style={styles.newsfeedDetails}>
+              <Text style={styles.topic}>Vote for Student Representative</Text>
+              <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.more}>
+          <Link href="/news">
+            <TouchableOpacity style={{ flexDirection: "row", gap: 5 }}>
+              <Text style={styles.moreText}>See more</Text>
+              <Ionicons
+                name="caret-forward-outline"
+                size={24}
+                color="#E8612D"
+              />
+            </TouchableOpacity>
+          </Link>
         </View>
         <Text style={styles.heading}>Upcoming Elections</Text>
         <View style={styles.collection}>
@@ -71,34 +81,20 @@ export default function Home() {
             <View style={styles.newsfeedDetails}>
               <Text style={styles.topic}>Vote for Student Representative</Text>
               <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
-              <Text style={styles.subtopic}>
-                Student Representatives are known as enrolled scholars at their
-                institution elected for a specific term to represent the student
-              </Text>
             </View>
           </View>
-          <View style={styles.feed}>
-            <View style={styles.newsfeedDetails}>
-              <Text style={styles.topic}>Vote for Student Representative</Text>
-              <Text style={styles.duration}>April 8th - 10th 8am to 10pm</Text>
-              <Text style={styles.subtopic}>
-                Student Representatives are known as enrolled scholars at their
-                institution elected for a specific term to represent the student
-              </Text>
-            </View>
-          </View>
-          <View style={styles.more}>
-            <Link href="/news">
-              <TouchableOpacity style={{ flexDirection: "row", gap: 5 }}>
-                <Text style={styles.moreText}>See more</Text>
-                <Ionicons
-                  name="caret-forward-outline"
-                  size={24}
-                  color="#E8612D"
-                />
-              </TouchableOpacity>
-            </Link>
-          </View>
+        </View>
+        <View style={styles.more}>
+          <Link href="/news">
+            <TouchableOpacity style={{ flexDirection: "row", gap: 5 }}>
+              <Text style={styles.moreText}>See more</Text>
+              <Ionicons
+                name="caret-forward-outline"
+                size={24}
+                color="#E8612D"
+              />
+            </TouchableOpacity>
+          </Link>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -172,15 +168,21 @@ const styles = StyleSheet.create({
     marginTop: 26,
   },
   collection: {
-    flexDirection: "column",
+    width: "100%",
+    overflow: "hidden",
+    height: "auto",
+    flexDirection: "row",
     gap: 20,
+    flexWrap: "wrap",
+    paddingVertical: 10,
   },
   feed: {
-    width: "100%",
-    height: 200,
+    width: 150,
+    height: 150,
     backgroundColor: "#F6C6B3",
-    borderRadius: 30,
-    padding: 10,
+    borderRadius: 10,
+
+    padding: 6,
     alignContent: "center",
     justifyContent: "center",
     shadowColor: "#000",
@@ -192,15 +194,15 @@ const styles = StyleSheet.create({
     borderColor: "#E8612D",
   },
   topic: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: 600,
     textAlign: "center",
   },
   duration: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: 600,
     color: "#4f4f4f",
-    marginBottom: 10,
+    marginTop: 10,
     textAlign: "center",
   },
   subtopic: {

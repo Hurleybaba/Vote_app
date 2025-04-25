@@ -1,4 +1,3 @@
-import Modal from "react-native-modal";
 import {
   Image,
   ScrollView,
@@ -7,344 +6,150 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   View,
+  StatusBar,
 } from "react-native";
 import image from "@/assets/images/download.jpg";
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
 import { router } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
-  const [ongoing, setOngoing] = useState(true);
-  const toggleTab = (status) => () => setOngoing(status);
-
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [selectedFeed, setSelectedFeed] = useState(null);
-
-  const toggleModal = (feedInfo) => {
-    setSelectedFeed(feedInfo);
-    setModalVisible(!isModalVisible);
-  };
-
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.box1}>
-        <TouchableWithoutFeedback onPress={toggleTab(true)}>
-          <Text style={[styles.heading, ongoing && styles.headingBold]}>
-            Ongoing
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      <ScrollView style={styles.container}>
+        <View style={styles.cont2}>
+          <Text style={styles.heading}>Latest Updates & News</Text>
+          <Text style={styles.subheading}>
+            Stay informed with real-time updates and announcements regarding the
+            app, and ongoing and upcoming Elections
           </Text>
-        </TouchableWithoutFeedback>
+        </View>
 
-        <TouchableWithoutFeedback onPress={toggleTab(false)}>
-          <Text style={[styles.heading, !ongoing && styles.headingBold]}>
-            Upcoming
-          </Text>
-        </TouchableWithoutFeedback>
-      </View>
-
-      {ongoing ? (
         <View style={styles.collection}>
-          <TouchableWithoutFeedback
-            onPress={() =>
-              toggleModal({
-                title: "Vote for Student Representative",
-                candidates: 5,
-              })
-            }
-          >
-            <View style={styles.feed}>
-              <View style={styles.newsfeedDetails}>
-                <Text style={styles.topic}>
-                  Vote for Student Representative
-                </Text>
-                <Text style={styles.duration}>
-                  April 8th - 10th 8am to 10pm
-                </Text>
-                <Text style={styles.subtopic}>
-                  Student Representatives are known as enrolled scholars at
-                  their institution elected for a specific term to represent the
-                  student
-                </Text>
-              </View>
+          <View style={styles.list}>
+            <View>
+              <Ionicons
+                name="volume-medium-outline"
+                size={20}
+                color="black"
+                style={styles.backIcon}
+              />
             </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback
-            onPress={() =>
-              toggleModal({
-                title: "Vote for Student Representative",
-                candidates: 5,
-              })
-            }
-          >
-            <View style={styles.feed}>
-              <View style={styles.newsfeedDetails}>
-                <Text style={styles.topic}>
-                  Vote for Student Representative
-                </Text>
-                <Text style={styles.duration}>
-                  April 8th - 10th 8am to 10pm
-                </Text>
-                <Text style={styles.subtopic}>
-                  Student Representatives are known as enrolled scholars at
-                  their institution elected for a specific term to represent the
-                  student
-                </Text>
-              </View>
+            <View style={styles.notes}>
+              <Text style={styles.topic}>SYSTEM UPDATES</Text>
+              <Text style={styles.details}>
+                App v1.0001 released - Now includes Face ID login.
+              </Text>
             </View>
-          </TouchableWithoutFeedback>
+          </View>
+          <View style={styles.list}>
+            <View>
+              <Ionicons
+                name="book-outline"
+                size={20}
+                color="black"
+                style={styles.backIcon}
+              />
+            </View>
+            <View style={styles.notes}>
+              <Text style={styles.topic}>VOTER EDUCATION</Text>
+              <Text style={styles.details}>
+                How to Verify Your Eligibility to Vote
+              </Text>
+            </View>
+          </View>
+          <View style={styles.list2}>
+            <View style={styles.notes}>
+              <Text style={styles.topic2}>
+                Presidential Elections Now Set for May 20, 2025
+              </Text>
+              <Text style={styles.date}>April 17, 2025</Text>
+              <Text style={styles.link}>View</Text>
+            </View>
+          </View>
+          <View style={styles.list2}>
+            <View style={styles.notes}>
+              <Text style={styles.topic2}>
+                Presidential Elections Now Set for May 20, 2025
+              </Text>
+              <Text style={styles.date}>April 17, 2025</Text>
+              <Text style={styles.link}>View</Text>
+            </View>
+          </View>
         </View>
-      ) : (
-        <View style={styles.collection}>
-          <TouchableWithoutFeedback
-            onPress={() =>
-              toggleModal({
-                title: "Vote for Student President",
-                candidates: 4,
-              })
-            }
-          >
-            <View style={styles.feed}>
-              <View style={styles.newsfeedDetails}>
-                <Text style={styles.topic}>Vote for Student President</Text>
-                <Text style={styles.duration}>
-                  April 8th - 10th 8am to 10pm
-                </Text>
-                <Text style={styles.subtopic}>
-                  Student Representatives are known as enrolled scholars at
-                  their institution elected for a specific term to represent the
-                  student
-                </Text>
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback
-            onPress={() =>
-              toggleModal({
-                title: "Vote for Student President",
-                candidates: 4,
-              })
-            }
-          >
-            <View style={styles.feed}>
-              <View style={styles.newsfeedDetails}>
-                <Text style={styles.topic}>Vote for Student President</Text>
-                <Text style={styles.duration}>
-                  April 8th - 10th 8am to 10pm
-                </Text>
-                <Text style={styles.subtopic}>
-                  Student Representatives are known as enrolled scholars at
-                  their institution elected for a specific term to represent the
-                  student
-                </Text>
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-        </View>
-      )}
-      <Modal
-        isVisible={isModalVisible}
-        onBackdropPress={() => setModalVisible(false)}
-        style={styles.modal}
-      >
-        <View style={styles.modalContent}>
-          <Text style={styles.modalTitle}>{selectedFeed?.title}</Text>
-          <Text style={styles.modalText}>
-            Number of Candidates: {selectedFeed?.candidates}
-          </Text>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.participants}
-          >
-            <View style={styles.rectangle}>
-              <View style={styles.circle}>
-                <Image source={image} style={styles.profile} />
-              </View>
-              <Text style={styles.participantName}>John Doe</Text>
-            </View>
-            <View style={styles.rectangle}>
-              <View style={styles.circle}>
-                <Image source={image} style={styles.profile} />
-              </View>
-              <Text style={styles.participantName}>John Doe</Text>
-            </View>
-            <View style={styles.rectangle}>
-              <View style={styles.circle}>
-                <Image source={image} style={styles.profile} />
-              </View>
-              <Text style={styles.participantName}>John Doe</Text>
-            </View>
-            <View style={styles.rectangle}>
-              <View style={styles.circle}>
-                <Image source={image} style={styles.profile} />
-              </View>
-              <Text style={styles.participantName}>John Doe</Text>
-            </View>
-            <View style={styles.rectangle}>
-              <View style={styles.circle}>
-                <Image source={image} style={styles.profile} />
-              </View>
-              <Text style={styles.participantName}>John Doe</Text>
-            </View>
-          </ScrollView>
-          <TouchableOpacity
-            style={styles.voteButton}
-            onPress={() => {
-              // Handle vote action here
-              setModalVisible(false);
-              router.push("/electionId"); // Navigate to the election page
-            }}
-          >
-            <Text style={styles.voteButtonText}>Vote Now</Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
     backgroundColor: "white",
     marginBottom: 100,
   },
-  box1: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 50,
+  cont2: {
+    backgroundColor: "#F78869",
+    paddingTop: 30,
+    paddingBottom: 40,
+    paddingHorizontal: 20,
   },
   heading: {
     textTransform: "uppercase",
-    textAlign: "center",
-    marginTop: 20,
     fontSize: 20,
     fontWeight: "bold",
-    color: "#4f4f4f",
-    borderBottomColor: "transparent",
-    borderBottomWidth: 3,
-    paddingBottom: 3,
-    width: "fit-content",
-    maxWidth: 220,
-    alignSelf: "center",
-    marginBottom: 12,
-    marginTop: 26,
+    width: "100%",
+    paddingBottom: 10,
+    color: "white",
   },
-  headingBold: {
-    color: "#E8612D",
-    borderBottomColor: "#E8612D",
-    borderBottomWidth: 3,
+  subheading: {
+    fontSize: 14,
+    color: "white",
   },
   collection: {
-    flexDirection: "column",
-    gap: 20,
+    paddingBottom: 30,
   },
-  feed: {
-    width: "100%",
-    height: 200,
-    backgroundColor: "#F6C6B3",
-    borderRadius: 30,
-    padding: 10,
-    alignContent: "center",
-    justifyContent: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    borderWidth: 1,
-    borderColor: "#E8612D",
+  list: {
+    flexDirection: "row",
+    gap: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    backgroundColor: "#FEECE6",
+    borderColor: "#FDD8CD",
+    borderBottomWidth: 1,
+  },
+  list2: {
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    backgroundColor: "#FFFBF9",
+    borderColor: "#FDD8CD",
+    borderBottomWidth: 1,
   },
   topic: {
-    fontSize: 22,
-    fontWeight: 600,
-    textAlign: "center",
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    marginBottom: 6,
   },
-  duration: {
-    fontSize: 18,
-    fontWeight: 600,
-    color: "#4f4f4f",
-    marginBottom: 10,
-    textAlign: "center",
-  },
-  subtopic: {
+  details: {
     fontSize: 14,
-    fontWeight: 500,
-    textAlign: "center",
   },
-  more: {
-    alignSelf: "flex-end",
-  },
-  moreText: {
-    fontSize: 16,
-  },
-
-  modal: {
-    justifyContent: "center",
-    margin: 0,
-  },
-
-  modalContent: {
-    backgroundColor: "white",
-    padding: 20,
-    borderRadius: 20,
-    height: "350",
-    width: "90%",
-    alignSelf: "center",
-    alignItems: "center",
-  },
-  participants: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 10,
-    marginBottom: 20,
-  },
-  circle: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    overflow: "hidden",
-  },
-  rectangle: {
-    width: 100,
-    minHeight: 100,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  participantName: {
-    fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  profile: {
-    width: "100%",
-    height: "100%",
-  },
-  modalTitle: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginBottom: 10,
-    textAlign: "center",
-  },
-  modalText: {
+  topic2: {
     fontSize: 18,
-    marginBottom: 30,
-    textAlign: "center",
-  },
-  voteButton: {
-    backgroundColor: "#E8612D",
-    paddingHorizontal: 40,
-    paddingVertical: 15,
-    borderRadius: 10,
-    width: "100%",
-    alignItems: "center",
-    borderRadius: 30,
-  },
-  voteButtonText: {
-    color: "white",
     fontWeight: "bold",
-    fontSize: 20,
+  },
+  date: {
+    fontSize: 12,
+    color: "gray",
+    paddingVertical: 10,
+  },
+  link: {
+    fontWeight: "bold",
+    color: "#F78869",
+    fontSize: 18,
   },
 });

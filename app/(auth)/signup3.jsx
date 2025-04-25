@@ -5,6 +5,7 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   Platform,
+  StatusBar,
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -26,6 +27,11 @@ export default function signup() {
       style={{ flex: 1 }}
     >
       <SafeAreaView style={styles.container}>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor="transparent"
+          translucent
+        />
         <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
           <TouchableOpacity onPress={() => router.back()}>
             <Ionicons

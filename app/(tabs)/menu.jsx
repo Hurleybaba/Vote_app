@@ -1,4 +1,11 @@
-import { ScrollView, StyleSheet, Text, View, Image } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  StatusBar,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
@@ -7,6 +14,11 @@ import profileImage from "@/assets/images/download.jpg";
 const menu = () => {
   return (
     <SafeAreaView style={{ flex: 1, width: "100%", height: "100%" }}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
       <ScrollView style={{ flex: 1, marginBottom: 80 }}>
         <View style={styles.container}>
           <View style={styles.circle}>
@@ -184,7 +196,6 @@ export default menu;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF",

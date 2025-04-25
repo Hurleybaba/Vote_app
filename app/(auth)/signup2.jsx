@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Platform,
   TextInput,
+  StatusBar,
 } from "react-native";
 import React, { useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -41,6 +42,11 @@ export default function signup2() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
       <TouchableOpacity onPress={() => router.back()}>
         <Ionicons
           name="arrow-back-outline"

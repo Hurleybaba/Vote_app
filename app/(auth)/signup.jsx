@@ -7,20 +7,60 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
 import Input from "../../components/input";
 import Button from "../../components/button";
+import { useFormStore } from "../../components/store";
 
 export default function signup() {
-  const [fullName, setFullName] = React.useState("");
-  const [username, setUsername] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [number, setNumber] = React.useState("");
-  // const [isLoading, setIsLoading] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [middleName, setMiddleName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+  const [isFilled, setIsFilled] = useState(false);
+
+  const setFormData = useFormStore((state) => state.setFormData);
+  const formData = useFormStore((state) => state.formData);
+
+  const handleSubmit = () => {
+    setFormData({
+      firstName,
+      lastName,
+      middleName,
+      username,
+      email,
+      number,
+    });
+
+    console.log(formData);
+    // Example: Navigate to the next screen
+    router.push("/signup2");
+  };
+
+  const checkInputFilled = () => {
+    if (
+      firstName.trim() === "" ||
+      lastName.trim() === "" ||
+      middleName.trim() === "" ||
+      username.trim() === "" ||
+      email.trim() === "" ||
+      number.trim() === ""
+    ) {
+      setIsFilled(false);
+    } else {
+      setIsFilled(true);
+    }
+  };
+
+  useEffect(() => {
+    checkInputFilled();
+  }, [firstName, lastName, middleName, username, email, number]);
 
   const router = useRouter();
 
@@ -50,14 +90,28 @@ export default function signup() {
             Make sure to fill all available fields
           </Text>
           <Input
-            name="Full Name"
-            placeholder="John Doe"
-            value={fullName}
-            onChangeText={setFullName}
+            name="First Name"
+            placeholder="Ex. John"
+            value={firstName}
+            onChangeText={setFirstName}
             keyboardType="default"
           />
           <Input
-            name="Username"
+            name="Last Name"
+            placeholder="Ex. Doe"
+            value={lastName}
+            onChangeText={setLastName}
+            keyboardType="default"
+          />
+          <Input
+            name="Middle Name"
+            placeholder="Ex. Smith"
+            value={middleName}
+            onChangeText={setMiddleName}
+            keyboardType="default"
+          />
+          <Input
+            name="Preferred Username"
             placeholder="JohnDoe"
             value={username}
             onChangeText={setUsername}
@@ -80,14 +134,24 @@ export default function signup() {
         </ScrollView>
         <Button
           text="Continue"
-          buttonStyle={{
-            position: "absolute",
-            bottom: 20,
-            marginLeft: 20,
-          }}
-          handlePress={() => {
-            router.push("/signup2");
-          }}
+          disabled={!isFilled}
+          buttonStyle={
+            isFilled
+              ? {
+                  position: "absolute",
+                  bottom: 20,
+                  marginLeft: 20,
+                }
+              : {
+                  backgroundColor: "#DADADA",
+                  position: "absolute",
+                  bottom: 20,
+                  marginLeft: 20,
+                  width: "105%",
+                  left: "-2.5%",
+                }
+          }
+          handlePress={handleSubmit}
         />
       </SafeAreaView>
     </KeyboardAvoidingView>
@@ -98,7 +162,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    padding: 20,
+    paddingHorizontal: 20,
     paddingBottom: 100,
   },
   heading: {
@@ -113,11 +177,5 @@ const styles = StyleSheet.create({
     fontWeight: "light",
     marginBottom: 10,
     color: "gray",
-  },
-  buttonDisabled: {
-    backgroundColor: "#DADADA",
-    position: "absolute",
-    bottom: 20,
-    marginLeft: 20,
   },
 });

@@ -31,7 +31,8 @@ export default function index() {
         text="Sign Up"
         handlePress={() => {
           // router.push("/(election)/123");
-          router.push("/(tabs)/home");
+          // router.push("/(tabs)/home");
+          router.push("/signup");
         }}
         textStyle={{ color: "white" }}
       />

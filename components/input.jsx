@@ -1,20 +1,26 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
+import Asterisk from "./asterisk";
 
 export default function Input({
   name,
   placeholder,
   value,
-  onChange,
+  onChangeText,
   keyboardType,
 }) {
   return (
     <View style={styles.outerContainer}>
-      <Text style={styles.text}>{name}</Text>
+      <View>
+        <Text style={styles.text}>
+          {name}
+          <Asterisk />
+        </Text>
+      </View>
       <TextInput
         placeholder={placeholder}
         value={value}
-        onChangeText={onChange}
+        onChangeText={onChangeText}
         keyboardType={keyboardType}
         autoCapitalize="none"
         autoCorrect={false}
@@ -32,15 +38,14 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: "regular",
-    color: "bold",
+    color: "gray",
   },
   input: {
-    borderWidth: 1,
-    borderColor: "gray",
+    borderBottomWidth: 1,
+    borderColor: "#DADADA",
     backgroundColor: "white",
-    borderRadius: 16,
-    padding: 14,
+    // borderRadius: 4,
     fontSize: 16,
-    marginTop: 5,
+    // marginTop: 5,
   },
 });
